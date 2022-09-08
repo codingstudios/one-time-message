@@ -37,7 +37,7 @@ app.post('/create', slowDown({
         const id = crypto.randomBytes(5).toString('hex');
         const code = crypto.randomBytes(10).toString('hex');
         const cryptr = new Cryptr(code);
-        value = cryptr.encrypt(value);
+        value = cryptr.encrypt(encodeURIComponent(value));
         if(!id || !value) return;
         await database({ id, value, code }).save();
         res.send({ id });
