@@ -14,7 +14,7 @@ fetch(`/read/${id}`, {
     for(var i = 0; i < r.random; i++) {
      message = atob(`${message}`);
     }
-   messages.textContent = message;
+   messages.textContent = decodeURIComponent(message);
     setTimeout(() => {
        messages.textContent = "";
        window.location = "/";
